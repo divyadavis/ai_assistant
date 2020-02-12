@@ -1,0 +1,17 @@
+<html>
+<div id="webchat"/>
+   <script src="https://storage.googleapis.com/mrbot-cdn/webchat-0.4.1.js"></script>
+   <script>
+       WebChat.default.init({
+           selector: "#webchat",
+           initPayload: "/greet",
+           interval: 1000, // 1000 ms between each message
+           customData: {"userId": "123"}, // arbitrary custom data. Stay minimal as this will be added to the socket
+           socketUrl: "http://localhost:4000",
+           socketPath: "/socket.io/",
+           title: "Title",
+           subtitle: "Subtitle",
+           profileAvatar: "http://to.avat.ar",
+       })
+   </script>
+</html>

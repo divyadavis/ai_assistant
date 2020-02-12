@@ -1,0 +1,77 @@
+intents:
+- greet:
+    triggers: utter_greet
+- projects
+- project management
+- departments:
+    triggers: action_show
+- technologies
+- location:
+    triggers: action_location
+- service
+- goodbye
+- thanks:
+     triggers: utter_thanks
+
+
+actions:
+- utter_greet
+- utter_cheer_up
+- utter_thanks
+- utter_happy
+- utter_goodbye
+- utter_default
+- action_location
+- utter_no_departments
+- utter_recent_project
+- action_show
+
+
+templates:
+  utter_greet:
+  - text: "Hello"
+
+  utter_default:
+  - text: "Sorry, i didn't understand"
+
+
+  utter_thanks:
+  - text: "Its my pleasure"
+
+  utter_no_departments:
+  - text: "four"
+
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://medilodgeoflivingston.com/wp-content/uploads/sites/86/2018/05/smile-day-1.jpg"
+
+  utter_happy:
+  - text: "Hey, How can i help you?"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_recent_project:
+  - text: "UIDAI"
+
+
+entities:
+- department_name
+- project_title
+- country_name
+
+
+
+slots:
+  department_name:
+    type: text
+
+  project_title:
+    type: text
+  
+  
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
