@@ -1,39 +1,44 @@
-## story 01
+## ask_location
 * location
   - action_location
-* greet
-  - utter_happy
 
-
-
-## sad path 1
-* greet
-  - utter_greet
-* greet
-  - utter_cheer_up
-* greet
-  - utter_happy
-
-## sad path 2
-* greet
-  - utter_greet
-* greet
-  - utter_cheer_up
-
-## say path 3
+## ask_recent_project
 * projects
   - utter_recent_project
+
+## explain_nlu
+* greet
+  - utter_greet
+* projects
+  - utter_explain_uidai
+
+## ask_departments
 * departments
-  - utter_no_departments
   - action_show
 
 
-## say path 4
+## greet
+* greet
+  - utter_greet
+* greet
+  - utter_cheer_up
+
+## ask_branch
+* branch
+  - utter_branch
+
+## say thanks
 * thanks 
   - utter_thanks
 
 ## say goodbye
 * goodbye
   - utter_goodbye
-  - export
+
+## inform_unit
+* departments
+  - utter_no_departments
+
+  
+
 

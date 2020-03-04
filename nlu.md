@@ -2,31 +2,31 @@
 - hey
 - hello
 - hai
+- hi
 - good morning
 - good evening
 - hey there
 - hii
-- how can i help you?
+
 
 ## intent:departments
 - how many departments?
-- tell me number of teams
-- which are various teams 
+- tell me number of units
+- which are various units 
 - How many employees are working under [enterprise](department_name) department?
-- head of the [enterprise](department_name) team
-- how many employees are working under [Digital](department_name)  deparatment?
-- head of the [Digital](department_name) team
-- how many employees are working under [NXT](department_name)  deparatment?
-- head of the [NXT](department_name) team
-- how many employees are working under [MS Enterprise](department_name)  deparatment?
-- head of the [MS Enterprise](department_name) team
-
+- head of the [enterprise](department_name) unit
+- how many employees are working under [digital](department_name)  deparatment?
+- head of the [digital](department_name) unit
+- how many employees are working under [nxt](department_name)  deparatment?
+- head of the [nxt](department_name) unit
+- how many employees are working under [ms enterprise](department_name)  deparatment?
+- head of the [ms enterprise](department_name) unit
 
 
 ## intent:project management
 - what are the current projects that you manage?
 - give me the current project report
-- give me the current project report on [CXO Insights platforms](project_title)
+- give me the current project report on [cxo insights platforms](project_title)
 - which reports are there in the current project?
 - when will this project be over?
 - upcoming projects
@@ -34,19 +34,23 @@
 
 ## intent:projects
 - which is your current project?
-- How long it will take to complete the project [CXO Insights platforms](project_title)?
+- How long it will take to complete the project [cxo insights platforms](project_title)?
 - how many projects have you done?
 - what is your recent project?
-- tell about your recent project
+- tell me about your recent project
 - future projects
 - Tell me about your project framework?
+- objective of your project [uidai](project_title)
+- objective of your project [aadhaar chatbot](project_title)
+- objective of your project [uidai chatbot](project_title)
+- most widely used technologies
+
 
 ## intent:technologies
 - what are the technologies that you are using?
-- what are the technologies behind [CXO Insights platforms](project_title)?
+- what are the technologies behind [cxo insights platforms](project_title)?
 - Latest technolgies
-- technology behind your [UIDAI](project_title)
-- most widely used technologies
+- technology behind your [uidai](project_title)
 
 ## intent:service
  - Application development
@@ -64,7 +68,10 @@
  - tell me your location
  - how many branches?
  - where are you based?
- - total number of branches across [India](country_name)?
+
+## intent:branch
+ - number of branches across [india](country_name)?
+ - number of branches across [bharath](country_name)?
  - which are the various branches?
  - where are the various branches located?
 
@@ -73,12 +80,21 @@
  - goodbye
  - bye bye
  - see you later
+ - talk to you later
 
 
 ## intent:thanks
  - thanks
  - thank you 
  - thanks for the information
- 
+
+## synonym:uidai
+ - aadhaar chatbot
+ - uidai chatbot
+
+
+## synonym:india
+ - bharath
+
 
 
