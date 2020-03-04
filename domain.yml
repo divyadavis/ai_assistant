@@ -1,9 +1,10 @@
 intents:
-- greet:
-    triggers: utter_greet
+- branch:
+    triggers: utter_branch
+- greet
 - projects
 - project management
-- departments:
+- departments: 
     triggers: action_show
 - technologies
 - location:
@@ -15,11 +16,14 @@ intents:
 
 
 actions:
+- utter_branch
+- utter_explain_uidai
 - utter_greet
 - utter_cheer_up
 - utter_thanks
 - utter_happy
 - utter_goodbye
+- utter_help
 - utter_default
 - action_location
 - utter_no_departments
@@ -29,11 +33,13 @@ actions:
 
 templates:
   utter_greet:
-  - text: "Hello"
+  - text: "Hello, let me know if you have any questions"
+
+  utter_branch:
+  - text: "one"
 
   utter_default:
   - text: "Sorry, i didn't understand"
-
 
   utter_thanks:
   - text: "Its my pleasure"
@@ -41,11 +47,12 @@ templates:
   utter_no_departments:
   - text: "four"
 
+  utter_explain_uidai:
+  - text: "Chatbot answers user queries related to aadhaar"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://medilodgeoflivingston.com/wp-content/uploads/sites/86/2018/05/smile-day-1.jpg"
-
+  - text: "How can i help you?"
+    
   utter_happy:
   - text: "Hey, How can i help you?"
 
@@ -55,6 +62,9 @@ templates:
   utter_recent_project:
   - text: "UIDAI"
 
+  utter_help:
+  - text: "How can i help you?"
+
 
 entities:
 - department_name
@@ -62,15 +72,6 @@ entities:
 - country_name
 
 
-
-slots:
-  department_name:
-    type: text
-
-  project_title:
-    type: text
-  
-  
 
 session_config:
   session_expiration_time: 60

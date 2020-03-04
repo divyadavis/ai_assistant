@@ -14,9 +14,10 @@ class ActionShow(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         print("action file called : action_show")
         #dispatcher.utter_message("leave type details:")
-        tmp = tracker.get_slot("department_name")
-        dispatcher.utter_message(tmp)
+        #tmp = tracker.get_slot("department_name")
+        
         tmp = next(tracker.get_latest_entity_values("department_name"), None)
+        dispatcher.utter_message(text="you want to know something related to {}".format(tmp))
         #print(tmp)
         return
 
@@ -49,6 +50,39 @@ class ActionLocation(Action):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 """
 
         department = tracker.get_slot('department_name')
@@ -63,16 +97,6 @@ class ActionLocation(Action):
       result = db.query(q)
 
       return [SlotSet("matches", result if result is not None else [])]
-
-
-
-
-
-
-
-
-
-
 
 
 
