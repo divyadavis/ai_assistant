@@ -2,7 +2,7 @@
 # https://rasa.com/docs/rasa/nlu/components/
 language: en
 pipeline:
-  - name: "WhitespaceTokenizer"
+  - name: "tokenizer.CustomTokenizer"
   - name: "RegexFeaturizer"
   - name: "CRFEntityExtractor"
   - name: "EntitySynonymMapper"
