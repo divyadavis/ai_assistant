@@ -1,0 +1,398 @@
+nlu.md
+------------------------------
+
+## intent:greet
+- hey
+- hello
+- hai
+- hi
+- good morning
+- good evening
+- hey there
+- hii
+
+
+## intent:departments
+- how many departments?
+- tell me number of units
+- which are various units 
+- How many employees are working under [enterprise](department_name) department?
+- head of the [enterprise](department_name) unit
+- how many employees are working under [digital](department_name)  deparatment?
+- head of the [digital](department_name) unit
+- how many employees are working under [nxt](department_name)  deparatment?
+- head of the [nxt](department_name) unit
+- how many employees are working under [ms enterprise](department_name)  deparatment?
+- head of the [ms enterprise](department_name) unit
+
+
+## intent:project_management
+- what are the current projects that you manage?
+- give me the current project report
+- give me the current project report on [cxo insights platforms](project_title)
+- which reports are there in the current project?
+- when will this project be over?
+- upcoming projects
+- what methodology do you use in the current project? 
+
+## intent:projects
+- which is your current project?
+- How long it will take to complete the project [cxo insights platforms](project_title)?
+- how many projects have you done?
+- what is your recent project?
+- tell me about your recent project
+- future projects
+- Tell me about your project framework?
+- objective of your project [uidai](project_title)
+- objective of your project [aadhaar chatbot](project_title)
+- objective of your project [uidai chatbot](project_title)
+- most widely used technologies
+
+
+## intent:technologies
+- what are the technologies that you are using?
+- what are the technologies behind [cxo insights platforms](project_title)?
+- Latest technolgies
+- technology behind your [uidai](project_title)
+
+## intent:service
+ - Application development
+ - AI and Machine Learning
+ - Design Studio
+ - Data Management
+ - Specialized Testing
+ - Digital Consulting & Solutions
+ - Enterprise Consulting & Solutions
+ - Cloud Intrastructure Management
+ - Application Maintenance & Support
+
+## intent:location
+ - where it is located?
+ - tell me your location
+ - how many branches?
+ - where are you based?
+
+
+## intent:weather
+- how is the weather today?
+- how is weather outside
+- what is the temprature in [Bengaluru](city_name)
+- will it rain today?
+- tell me about weather in [Delhi](city_name)
+- how will be temprature today?
+- is it sunny?
+- will it rain?
+- is it cloudy?
+- what are the chances of rain
+- how is weather in bangalore
+- current temprature
+- how is the weather today
+- may i know how hot it is outside
+- how cold it is outside
+
+
+## intent:branch
+ - number of branches across [india](country_name)?
+ - number of branches across [bharath](country_name)?
+ - which are the various branches?
+ - where are the various branches located?
+
+## intent:goodbye
+ - bye
+ - goodbye
+ - bye bye
+ - see you later
+ - talk to you later
+
+
+## intent:thanks
+ - thanks
+ - thank you 
+ - thanks for the information
+
+
+
+
+stories
+-------------------------------
+
+## greet
+* greet
+  - utter_greet
+
+## ask_location
+* location
+  - action_location
+
+
+## ask_branch
+* branch
+  - utter_branch
+
+## say thanks
+* thanks 
+  - utter_thanks
+
+## say goodbye
+* goodbye
+  - utter_goodbye
+
+## inform_unit
+* departments
+  - utter_no_departments
+
+
+## inform_weather
+* weather
+  - action_weather  
+
+
+
+config
+------------------------------------
+# Configuration for Rasa NLU.
+# https://rasa.com/docs/rasa/nlu/components/
+language: en
+pipeline:
+  - name: "WhitespaceTokenizer"
+  - name: "RegexFeaturizer"
+  - name: "CRFEntityExtractor"
+  - name: "EntitySynonymMapper"
+  - name: "CountVectorsFeaturizer"
+  - name: "EmbeddingIntentClassifier"
+
+
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+    max_history: 3
+  - name: KerasPolicy
+  - name: MappingPolicy
+  - name: FallbackPolicy
+    nlu_threshold: 0.4
+    core_threshold: 0.3
+    ambiguity_threshold: 0.1
+    fallback_action_name: action_default_fallback
+
+
+
+
+
+    domain
+    -------------------------------------------
+
+    intents:
+- branch
+- greet
+- projects
+- project_management
+- departments
+- technologies
+- location
+- service
+- goodbye
+- thanks
+- weather
+
+
+actions:
+- utter_branch
+- utter_explain_uidai
+- utter_greet
+- utter_cheer_up
+- utter_thanks
+- utter_happy
+- utter_goodbye
+- utter_help
+- utter_default
+- action_location
+- utter_no_departments
+- utter_recent_project
+- action_show
+- action_weather
+
+
+templates:
+  utter_greet:
+  - text: "Hello, let me know if you have any questions"
+
+  utter_branch:
+  - text: "one"
+
+  utter_default:
+  - text: "Sorry, i didn't understand"
+
+  utter_thanks:
+  - text: "Its my pleasure"
+
+  utter_no_departments:
+  - text: "four"
+
+  utter_explain_uidai:
+  - text: "Chatbot answers user queries related to aadhaar"
+
+  utter_cheer_up:
+  - text: "How can i help you?"
+    
+  utter_happy:
+  - text: "Hey, How can i help you?"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_recent_project:
+  - text: "UIDAI"
+
+  utter_help:
+  - text: "How can i help you?"
+
+
+entities:
+- department_name
+- project_title
+- country_name
+- city_name
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
+
+  actions
+  ------------------------------------
+
+  from typing import Any, Text, Dict, List
+import requests, json
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
+
+
+class ActionShow(Action):
+
+    def name(self) -> Text:
+        return "action_show"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action file called : action_show")
+        #dispatcher.utter_message("leave type details:")
+        #tmp = tracker.get_slot("department_name")
+        
+        tmp = next(tracker.get_latest_entity_values("department_name"), None)
+
+        print("tmp", tmp)
+
+        dispatcher.utter_message(text="you want to know something related to {}".format(tmp))
+        #print(tmp)
+        return
+
+
+
+
+
+
+
+class ActionLocation(Action):
+
+    def name(self) -> Text:
+        return "action_location"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        print("action file called : action_location")
+        #department = tracker.get_slot("department_name")
+        dispatcher.utter_message(text="Bengaluru")
+
+        return 
+
+       
+
+
+
+
+class ActionWeather(Action):
+     def name(self) -> Text:
+        return "action_weather"
+     def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+         print("action file called : action_weather")
+        
+
+         location = next(tracker.get_latest_entity_values("city_name"), None)
+
+         if location is None:
+
+
+             send_url = "https://api.ipfind.com?ip=49.15.196.100&auth=1741d3b4-a220-4041-9df3-d1e6e6e6c76a"
+             response = requests.get(send_url)
+             print(response)
+             data = response.json()
+
+             lat = data["latitude"]
+             lon = data["longitude"]
+             print("location", data["city"])
+             print("lat", lat)
+             url = "https://api.openweathermap.org/data/2.5/weather?lat=" + str(lat) + "&lon=" + str(lon) + "&APPID=3a1460156ae6d16dc1fa7cc8e986e94e"
+
+         else:
+
+             print("location", location)
+
+             url = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=3a1460156ae6d16dc1fa7cc8e986e94e"
+    
+
+         print("url :", url)
+
+         response = requests.get(url)
+
+         #print(response)
+
+         data = response.json()
+
+         #print(data["cod"])
+
+         r = data["main"]
+
+         #print("temperature:", r["temp"])
+         #print("pressure:", r["pressure"])
+         #print("humidity:", r["humidity"])
+
+
+         response = """ The temperature is {} , The pressure is {}, The humidity is {} %.""".format(r["temp"], r["pressure"], r["humidity"])
+        
+         dispatcher.utter_message(response)
+
+
+
+"""
+
+        department = tracker.get_slot('department_name')
+        dispatcher.utter_message("you want to know something related to {} team".format(department))
+
+        return [SlotSet("department_name",department)]
+
+
+
+      cuisine = tracker.get_slot('cuisine')
+      q = "select * from restaurants where cuisine='{0}' limit 1".format(cuisine)
+      result = db.query(q)
+
+      return [SlotSet("matches", result if result is not None else [])]
+
+
+
+"""
+
+
+
