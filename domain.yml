@@ -1,75 +1,127 @@
 intents:
-- branch:
-    triggers: utter_branch
-- greet
-- projects
-- project management
-- departments: 
-    triggers: action_show
-- technologies
-- location:
-    triggers: action_location
-- service
-- goodbye
-- thanks:
-     triggers: utter_thanks
-
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - thanks
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - police_museum
+  - cell_inventor
+  - finn_independence
+  - moon_lander
+  - potato_founder
+  - grand_central_terminal
+  - fire_temple
+  - first_cricket
+  - weather
+  - prime_minister
+  - days_in_week
+  - indian_national_animal
+  - largest_statue
+  - smallest_country
+  - location
+  - calculation
 
 actions:
-- utter_branch
-- utter_explain_uidai
 - utter_greet
-- utter_cheer_up
-- utter_thanks
-- utter_happy
 - utter_goodbye
-- utter_help
-- utter_default
+- utter_iamabot
+- fallback_action
+- utter_low_confidence
+- utter_out_of_scope
+- utter_fetching_data
+- utter_police_museum
+- utter_cell_inventor
+- utter_finn_independence
+- utter_moon_lander
+- utter_potato_founder
+- utter_grand_central_terminal
+- utter_first_cricket
+- utter_fire_temple
+- action_weather
 - action_location
-- utter_no_departments
-- utter_recent_project
 - action_show
+- utter_prime_minister
+- utter_days_in_week
+- utter_indian_national_animal
+- utter_largest_statue
+- utter_smallest_country
 
 
 templates:
   utter_greet:
-  - text: "Hello, let me know if you have any questions"
+  - text: "Hai, how can i help you?"
 
-  utter_branch:
-  - text: "one"
+  utter_police_museum:
+  - text: "India's first police museum established in Delhi is the first museum of its kind in India, and showcases over 2000 years of policing in the region"
 
-  utter_default:
-  - text: "Sorry, i didn't understand"
+  utter_cell_inventor:
+  - text: "Martin Cooper, byname Marty Cooper, (born December 26, 1928, Chicago, Illinois, U.S.), American engineer who led the team that in 1972–73 built the first mobile cell phone and made the first cell-phone call. He is widely regarded as the father of the cellular phone."
 
   utter_thanks:
   - text: "Its my pleasure"
 
-  utter_no_departments:
-  - text: "four"
+  utter_finn_independence:
+  - text: "Finland's Independence Day is a national public holiday, and a flag day, held on 6 December to celebrate Finland's declaration of independence from Russia in 1917."
 
-  utter_explain_uidai:
-  - text: "Chatbot answers user queries related to aadhaar"
-
-  utter_cheer_up:
-  - text: "How can i help you?"
+  utter_moon_lander:
+  - text: "Neil Alden Armstrong was an American astronaut and aeronautical engineer and the first person to walk on the Moon."
+ 
+  utter_grand_central_terminal:
+  - text: "Grand Central Terminal (GCT), often called Grand Central Station or simply Grand Central is a train station in New York City. It is world's largest train station"
     
-  utter_happy:
-  - text: "Hey, How can i help you?"
+  utter_potato_founder:
+  - text: "Walter Raleigh first brought potato to ireland"
 
   utter_goodbye:
   - text: "Bye"
 
-  utter_recent_project:
-  - text: "UIDAI"
+  utter_iamabot:
+  - text: "I am your assistant, Thor."
 
-  utter_help:
-  - text: "How can i help you?"
+
+  utter_prime_minister:
+  - text: "Shri Narendra Damodardas Modi is the 14th and current prime minister of India."
+
+  utter_first_cricket:
+  - text: "First ever international cricket match, was a test match played between England and Australia at Melbourne cricket ground, from 15 to 19 March 1877"
+  
+  utter_fire_temple:
+  - text: "Agiyari or the Fire Temple is the place of worship for Zoroastrians (Parsis)."
+
+
+  utter_low_confidence:
+  - text: "Can you rephrase that please?"
+      
+  utter_out_of_scope:
+  - text: "Sorry, I could not understand you."
+       
+
+  utter_fetching_data:
+  - text: "Let me fetch the info."
+
+  utter_days_in_week:
+  - text: "There are 7 days in a week."
+     
+
+  utter_indian_national_animal:
+  - text: "Bengal Tiger (Panthera tigris)  is the national animal of India."
+     
+
+  utter_smallest_country:
+  - text: "Vatican City, a city-state surrounded by Rome, Italy, is the headquarters of the Roman Catholic Church and world's smallest_country."
+      
+  utter_largest_statue:
+  - text: "The Statue of Unity, situated in Narmada Valley, Gujrat, is the largest statue in the world with a height of 182 metres."
+      
+       
 
 
 entities:
-- department_name
-- project_title
-- country_name
+- operand
+- city_name
 
 
 

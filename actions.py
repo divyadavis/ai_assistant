@@ -59,33 +59,22 @@ class ActionWeather(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
          print("action file called : action_weather")
-        
-
          location = next(tracker.get_latest_entity_values("city_name"), None)
+         if location is None:
+             send_url = "https://api.ipfind.com?ip=49.15.196.100&auth=1741d3b4-a220-4041-9df3-d1e6e6e6c76a"
+             response = requests.get(send_url)
+             data = response.json()
+             lat = data["latitude"]
+             lon = data["longitude"]
+             url = "https://api.openweathermap.org/data/2.5/weather?lat=" + str(lat) + "&lon=" + str(lon) + "&APPID=3a1460156ae6d16dc1fa7cc8e986e94e"
 
-         print("location", location)
-
-         url = "http://api.openweathermap.org/data/2.5/weather?q=" + "Bengaluru" + "&APPID=3a1460156ae6d16dc1fa7cc8e986e94e"
-
-         print("url :", url)
-
+         else:
+             print("location", location)
+             url = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=3a1460156ae6d16dc1fa7cc8e986e94e"
          response = requests.get(url)
-
-         #print(response)
-
          data = response.json()
-
-         #print(data["cod"])
-
          r = data["main"]
-
-         #print("temperature:", r["temp"])
-         #print("pressure:", r["pressure"])
-         #print("humidity:", r["humidity"])
-
-
-         response = """ The temperature is {} , The pressure is {}, The humidity is {} %.""".format(r["temp"], r["pressure"], r["humidity"])
-        
+         response = """ The temperature is {} , The pressure is {}, The humidity is {} %. in location {}.""".format(r["temp"], r["pressure"], r["humidity"], location)
          dispatcher.utter_message(response)
 
 
