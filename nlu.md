@@ -99,58 +99,66 @@
 
 
 ## intent:calculation
-- [add](operand) five and four
-- [add](operand) 94 99
-- [add](operand) sixty two and ninty nine
-- [addition](operand) of one thousand sixty six and one hundred four
-- [add](operand) six to twenty two
-- can you [add](operand) five and fifty?
-- please [add](operand) two and two
-- one twenty six [plus](operand) fifty nine
-- 8 [plus](operand) 77
-- seven [plus](operand) 8
-- eighty five [plus](operand) ninty nine
-- [add](operand) 9 and 76
-- [add](operand) five and 6333
-- [add](operand) 98808 and one
-- [add](operand) six and sixty five for me
-- do ninety five [plus](operand) eight hundred
-- [subtract](operand) five from four
-- [subtract](operand) 94 99
-- [subtract](operand) sixty two from ninty nine
-- [subtraction](operand) of one thousand sixty six from one hundred four
-- [subtract](operand) six from twenty two
-- [subtract](operand) 8 and 90
-- [subtract](operand) fifty and 7
-- can you [subtract](operand) five and fifty?
-- please [subtract](operand) two from two
-- one twenty six [minus](operand) fifty nine
-- 8 [minus](operand) 77
-- do ninety five [minus](operand) eight hundred
-- [multiply](operand) five and four
-- [multiply](operand) 94 99
-- [multiply](operand) sixty two and ninty nine
-- [multiplication](operand) of one thousand sixty six and one hundred four
-- [multiply](operand) six to twenty two
-- can you [multiply](operand) five and fifty?
-- please [multiply](operand) two and two
-- one twenty six [into](operand) fifty nine
-- 8 [into](operand) 77
-- do ninety five [into](operand) eight hundred
-- one twenty six [multiplied](operand) by fifty nine
-- 8 [multiplied](operand) by 77
-- what is ninety five [multiplied](operand) by eight hundred
-- [divide](operand) five and four
-- [divide](operand) 94 99
-- [divide](operand) sixty two by ninty nine
-- [division](operand) of one thousand sixty six by one hundred four
-- [divide](operand) six by twenty two
-- can you [divide](operand) five and fifty?
-- please [divide](operand) two by two
-- one twenty six [divided](operand) by fifty nine
-- 8 [divided](operand) by 77
-- do ninety five [divided](operand) by eight hundred
-
+- [add](operator) five and four
+- [add](operator) [94.2](operand) [99.2](operand)
+- [add](operator) sixty two and ninty nine
+- [addition](operator) of one thousand sixty six and one hundred four
+- [add](operator) six to twenty two
+- can you [add](operator) five and fifty?
+- please [add](operator) two and two
+- one twenty six [plus](operator) fifty nine
+- [8.2](operand) [plus](operator) [77.3](operand)
+- seven [plus](operator) 8
+- [add](operator) [99.3](operand) [99.3](operand)
+- eighty five [plus](operator) ninty nine
+- [add](operator) [9](operand) and [76](operand)
+- [add](operator) five and 6333
+- [add](operator) 98808 and one
+- [add](operator) [94.5](operand) [12.6](operand)
+- [add](operator) six and sixty five for me
+- do ninety five [plus](operator) eight hundred
+- [subtract](operator) five from four
+- [plus](operator) [12.8](operand) [99](operand)
+- [subtract](operator) [94](operand) [99](operand)
+- [subtract](operator) sixty two from ninty nine
+- [subtraction](operator) of one thousand sixty six from one hundred four
+- [subtract](operator) six from twenty two
+- [subtract](operator) [8](operand) and [90](operand)
+- [subtract](operator) fifty and 7
+- can you [subtract](operator) five and fifty?
+- please [subtract](operator) two from two
+- one twenty six [minus](operator) fifty nine
+- [8](operand) [minus](operator) [77](operand)
+- do ninety five [minus](operator) eight hundred
+- [multiply](operator) five and four
+- [multiply](operator) [94.1](operand) [99.1](operand)
+- [multiply](operator) sixty two and ninty nine
+- [multiplication](operator) of one thousand sixty six and one hundred four
+- [multiply](operator) six to twenty two
+- [8.1](operand) [minus](operator) [77.1](operand)
+- can you [multiply](operator) five and fifty?
+- please [multiply](operator) two and two
+- [8.2](operand) [add](operator) [77.8](operand)
+- one twenty six [into](operator) fifty nine
+- [8](operand) [into](operator) [77](operand)
+- do ninety five [into](operator) eight hundred
+- one twenty six [multiplied](operator) by fifty nine
+- [8](operand) [multiplied](operator) by [77](operand)
+- what is ninety five [multiplied](operator) by eight hundred
+- [divide](operator) five and four
+- [divide](operator) [94.1](operand) [99.3](operand)
+- [divide](operator) sixty two by ninty nine
+- [division](operator) of one thousand sixty six by one hundred four
+- [divide](operator) six by twenty two
+- can you [divide](operator) five and fifty?
+- please [divide](operator) two by two
+- one twenty six [divided](operator) by fifty nine
+- [8](operand) [divided](operator) by [77](operand)
+- do ninety five [divided](operator) by eight hundred
+- [left](operator) [4](operand) [plus](operator) [3](operand) [right](operator) [multiply](operator) [2](operand)
+- [2](operand) [multiply](operator) [left](operator) [4](operand) [plus](operator) [3](operand) [right](operator)
+- [left](operator) [44](operand) [plus](operator) [3](operand) [right](operator) [divide](operator) [2](operand) 
+- [left](operator) [4](operand) [plus](operator) [3](operand) [right](operator)
 
 
 ## intent:moon_lander
@@ -264,7 +272,7 @@
 - one week has how many days?
 - a week has how many days
 - Maximum number of days a week can have
-- Number of days a week has
+- number of days a week has
 - a week has how many number of days?
 - number of days in a week
 
@@ -358,3 +366,34 @@
 
 ## lookup:city_name
   data/city_name.txt
+  data/country_name.txt
+
+
+## synonym:+
+ - plus
+ - add
+
+## synonym:(
+ - left
+
+## synonym:)
+ - right
+
+## synonym:-
+ - minus
+ - subtract
+
+## synonym:*
+ - multiply
+ - multiplication
+ - into
+ - multiplied
+
+## synonym:/
+ - divide
+ - division
+ - divided
+
+
+## regex:operand
+ - [0-9]{1,10}
