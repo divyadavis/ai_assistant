@@ -41,8 +41,8 @@ actions:
 - utter_first_cricket
 - utter_fire_temple
 - action_weather
-- action_location
-- action_show
+- utter_location
+- action_calculation
 - utter_prime_minister
 - utter_days_in_week
 - utter_indian_national_animal
@@ -52,7 +52,7 @@ actions:
 
 templates:
   utter_greet:
-  - text: "Hai, how can i help you?"
+  - text: "Hai, let me know if you have any questions?"
 
   utter_police_museum:
   - text: "India's first police museum established in Delhi is the first museum of its kind in India, and showcases over 2000 years of policing in the region"
@@ -79,8 +79,10 @@ templates:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "I am your assistant, Thor."
+  - text: "I am your assistant."
 
+  utter_location:
+  - text: "Bangalore"
 
   utter_prime_minister:
   - text: "Shri Narendra Damodardas Modi is the 14th and current prime minister of India."
@@ -120,9 +122,10 @@ templates:
 
 
 entities:
-- operand
 - city_name
-
+- operator
+- operand
+- number
 
 
 session_config:
